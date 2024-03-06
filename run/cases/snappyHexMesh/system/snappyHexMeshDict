@@ -1,0 +1,110 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  10
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    format      ascii;
+    class       dictionary;
+    object      snappyHexMeshDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+//- Which of the steps to run
+//- 要运行哪一个步骤
+castellatedMesh true;   //- 是否切割网格
+snap            true;   //- 是否进行网格贴合
+addLayers       true;   //- 是否添加网格边界层
+
+// Merge tolerance. Is fraction of overall bounding box of initial mesh.
+// Note: the write tolerance needs to be higher than this.
+mergeTolerance 1e-6;
+
+// 几何信息设置。所有表面的定义。所有表面均为searchableSurface类。
+// 表面被用来：
+// - 为与之相交的网格指定细化
+// - 为内部/外部/附近的网格单元指定细化
+// - 将网格边界“捕捉”到表面
+geometry
+{
+    body
+    {
+        type triSurfaceMesh;
+        file "body.stl";
+    }
+/*
+    propeller 
+    {
+        type triSurfaceMesh;
+        file "propeller.stl";
+    }
+
+    refinementBoxFin
+    {
+        type searchableBox;
+        min     (-0.6 -0.25 -0.25);
+        max     ( 1.0  0.25  0.25);
+    }
+
+    refinementBoxIn
+    {
+        type searchableBox;
+        min     (-0.75 -0.5 -0.5);
+        max     ( 2.5  0.5  0.5);
+    }
+
+    refinementBoxMiddle
+    {
+        type searchableBox;
+        min     (-1 -0.75 -0.75);
+        max     ( 3.5   0.75  0.75);
+    }
+*/
+    refinementBoxOut
+    {
+        type searchableBox;
+        min     (-1 -0.75 -0.75);
+        max     ( 3  0.75  0.75);
+    }
+
+    refinementBoxLine
+    {
+        type searchableBox;
+        min     (-100 -1 -1);
+        max     ( 100  1  1);
+    }
+};
+
+// Settings for the castellatedMesh generation.
+// 切割网格子字典
+castellatedMeshControls
+{
+    #include "snappyHexMeshLib/castellatedMeshControlsDict"
+}
+
+// Settings for the snapping.
+// 网格贴合设置
+snapControls
+{
+    #include "snappyHexMeshLib/snapControlsDict"
+}
+
+// Settings for the layer addition.
+// 添加边界层设置
+addLayersControls
+{
+    #include "snappyHexMeshLib/addLayersControlsDict"
+}
+
+// Generic mesh quality settings. At any undoable phase these determine
+// where to undo.
+// 通用网格质量设置。
+meshQualityControls
+{
+    #include "snappyHexMeshLib/meshQualityDict"
+}
+
+// ************************************************************************* //

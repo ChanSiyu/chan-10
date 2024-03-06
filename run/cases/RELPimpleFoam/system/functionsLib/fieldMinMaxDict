@@ -1,0 +1,24 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  8
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+
+fieldMinMax_object
+{
+    type                    fieldMinMax; 
+    libs                    ("libfieldFunctionObjects.so");
+    log                     true;
+    location                true;
+
+    mode                    magnitude;//输出结果选项：大小(magnitude)，分量(component)
+
+    // 指定数据写入频率
+    writeControl            timeStep;
+    writeInterval           1;
+
+    // 指定需要输出的物理场
+    fields                  (p U);
+}

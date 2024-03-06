@@ -1,0 +1,150 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  10
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+
+// Mesh selection
+// 网格选择
+// ~~~~~~~~~~~~~~
+
+// After refinement patches get added for all refinementSurfaces and
+// all cells intersecting the surfaces get put into these patches. The
+// section reachable from the locationInMesh is kept.
+// NOTE: This point should never be on a face, always inside a cell, even
+// after refinement.
+insidePoint (2 0 0);
+
+// Refinement parameters
+// 细化参数
+// ~~~~~~~~~~~~~~~~~~~~~
+
+// If local number of cells is >= maxLocalCells on any processor
+// switches from from refinement followed by balancing
+// (current method) to (weighted) balancing before refinement.
+// 细化网格过程中每个处理器处理的最大网格数量
+maxLocalCells 1000000;
+
+// Overall cell limit (approximately). Refinement will stop immediately
+// upon reaching this number so a refinement level might not complete.
+// Note that this is the number of cells before removing the part which
+// is not 'visible' from the keepPoint. The final number of cells might
+// actually be a lot less.
+//移除网格之前进行网格细化的最大网格数量
+maxGlobalCells 20000000;
+
+// The surface refinement loop might spend lots of iterations refining just
+// a few cells. This setting will cause refinement to stop if <=
+// minimumRefine are selected for refinement. Note: it will at least do one
+// iteration (unless the number of cells to refine is 0)
+//如果需要细化的网格数量小于这个数量，停止细化
+minRefinementCells 5;
+
+// Maximum processor imbalance during refinement, i.e., if the number of 
+// vertices on one processor differs from average number of vertices on another 
+// processor by more than maxLoadUnbalance $ \times 100\%$, then re-balancing 
+// algorithm is performed
+maxLoadUnbalance 0.10;
+
+// Number of buffer layers between different levels.
+// 1 means normal 2:1 refinement restriction, larger means slower
+// refinement.
+//不同级别细化过程中的缓冲层数量
+nCellsBetweenLevels 2;
+
+// Resolve sharp angles on fridges
+resolveFeatureAngle 30;
+
+// Explicit feature edge refinement
+// 显式特征边缘细化
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+// Specifies a level for any cell intersected by its edges.
+// This is a featureEdgeMesh, read from constant/triSurface for now.
+// 
+features 
+(
+    {
+        file  "body.eMesh";  // 特征边文件
+        level 6;
+    }
+);
+
+// Surface based refinement
+// 基于表面的细化
+// ~~~~~~~~~~~~~~~~~~~~~~~~
+
+// Specifies two levels for every surface. The first is the minimum level,
+// every cell intersecting a surface gets refined up to the minimum level.
+// The second level is the maximum level. Cells that 'see' multiple
+// intersections where the intersections make an
+// angle > resolveFeatureAngle get refined up to the maximum level.
+//- 第一个是最低级别，每个与面相交的单元都被细化到最低级别。
+//- 第二个是最高级别，“看到”多个相交的单元会在相交成的角度>分解特征角度的情况下精化到最大级别。
+
+refinementSurfaces
+{
+
+    body
+    {
+        level (6 6);
+
+        patchInfo
+        {
+            type wall;
+        }
+    }
+}
+
+// Region-wise refinement
+// 区域细化
+// ~~~~~~~~~~~~~~~~~~~~~~
+
+// Specifies refinement level for cells in relation to a surface. One of
+// three modes
+// - distance. 'levels' specifies per distance to the surface the
+//   wanted refinement level. The distances need to be specified in
+//   descending order.
+// - inside. 'levels' is only /*细化到指定水平。需要封闭表面以使其成为可能。
+// - outside  与上述相同但是在外面。
+
+refinementRegions
+{
+/*
+    refinementBoxFin
+    {
+        mode        inside;
+        level       5;
+    }
+
+    refinementBoxIn
+    {
+        mode        inside;
+        level       4;
+    }
+
+    refinementBoxMiddle
+    {
+        mode        inside;
+        level       3;
+    }
+*/
+    refinementBoxOut
+    {
+        mode        inside;
+        level       2;
+    }
+
+    refinementBoxLine
+    {
+        mode        inside;
+        level       1;
+    }
+}
+
+// Whether any faceZones (as specified in the refinementSurfaces)
+// are only on the boundary of corresponding cellZones or also allow
+// free-standing zone faces. Not used if there are no faceZones.
+allowFreeStandingZoneFaces false;

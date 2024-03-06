@@ -1,0 +1,31 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  8
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+
+forces_object
+{
+    type                forces;             // 指定类型为forces，必须项
+    libs                ("libforces.so");   // 加载functionObject库
+    log                 true;
+    patches             ("body");           // 指定参与计算的边界，必须项
+ 
+    // 指定数据输出频率
+    writeControl        timeStep;
+    writetInterval      1;    
+    
+    //// 指定压力场与速度场的变量名称
+    pName               p;
+    Uname               U;
+ 
+    // 参考密度值。它仅需要针对不可压缩的流进行定义。
+    // 对于可压缩流，将使用计算的密度代替
+    rho                 rhoInf;
+    rhoInf              1
+ 
+    //// 指定力矩计算所需的旋转中心
+    CofR                (0 0 0);
+}

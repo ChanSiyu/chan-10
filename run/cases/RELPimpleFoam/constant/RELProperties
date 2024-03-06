@@ -1,0 +1,35 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  10
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    format      ascii;
+    class       dictionary;
+    object      relProperties;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+RELModel                subFunctions;
+
+origin                  (0 0 0);
+
+subFunctionsCoeffs
+{
+    translationalVelocity
+    {
+        type                    tableFile;
+        file                    "translationalVelocity.txt";
+    }
+
+    angularVelocity
+    {
+        type                    tableFile;
+        file                    "anglularVelocity.txt";
+    }
+}
+    
+// ************************************************************************* //
