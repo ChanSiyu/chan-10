@@ -1,0 +1,33 @@
+general = cfdTools/general
+
+REL = $(general)/REL
+SOURCE += $(REL)/RELModel/RELModel/RELModel.C
+SOURCE += $(REL)/RELModel/RELModel/RELModelNew.C
+
+subFunction = $(REL)/RELModel/subFunctions
+
+forcedRun = $(subFunction)/forcedRun
+SOURCE += $(forcedRun)/forcedRun.C
+
+freeRunMotion = $(subFunction)/freeRunMotion
+SOURCE += $(freeRunMotion)/freeRunMotion.C
+SOURCE += $(freeRunMotion)/freeRunMotionIO.C
+SOURCE += $(freeRunMotion)/freeRunMotionState.C
+SOURCE += $(freeRunMotion)/freeRunMotionStateIO.C
+
+restraints = $(freeRunMotion)/restraints
+SOURCE += $(restraints)/freeRunMotionRestraint/freeRunMotionRestraint.C
+SOURCE += $(restraints)/freeRunMotionRestraint/freeRunMotionRestraintNew.C
+
+constraints = $(freeRunMotion)/constraints
+SOURCE += $(constraints)/freeRunMotionconstraints/freeRunMotionconstraints.C
+SOURCE += $(constraints)/freeRunMotionconstraints/freeRunMotionconstraintsNew.C
+
+freeRunSolvers = $(freeRunMotion)/freeRunSolvers
+SOURCE += $(freeRunSolvers)/freeSolver/freeSolver.C
+
+SOURCE += $(REL)/derivedFvPatchFields/RELFreestreamVelocityFvPatchVectorField/RELFreestreamVelocityFvPatchVectorField.C
+SOURCE += $(REL)/derivedFvPatchFields/RELVelocityFvPatchVectorField/RELVelocityFvPatchVectorField.C
+SOURCE += $(REL)/derivedFvPatchFields/RELWallVelocityFvPatchVectorField/RELWallVelocityFvPatchVectorField.C
+
+LIB = $(FOAM_USER_LIBBIN)/libmyFiniteVolume

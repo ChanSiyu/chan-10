@@ -1,0 +1,21 @@
+{
+    "files.associations": {
+        "freeRunMotion.C": "cpp",
+        "forcedRun.C": "cpp",
+        "relproperties": "cpp",
+        "RELModel.C": "cpp",
+        "RELPimpleFoam.C": "cpp",
+        "sixDoFRigidBodyMotionState.H": "cpp",
+        "freeRunMotionIO.C": "cpp",
+        "freeRunMotionState.C": "cpp",
+        "freeRunMotionStateIO.C": "cpp",
+        "freeRunMotionRestraint.C": "cpp",
+        "freeRunMotionRestraintNew.C": "cpp",
+        "freeSolver.C": "cpp",
+        "freeSolverNew.C": "cpp",
+        "freeRunSolver.C": "cpp",
+        "forcecoeffsdict": "cpp",
+        "controldict": "cpp"
+    },
+    "C_Cpp.errorSquiggles": "enabled"
+}

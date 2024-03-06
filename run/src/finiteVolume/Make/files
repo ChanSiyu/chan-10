@@ -1,0 +1,33 @@
+general = cfdTools/general
+
+REL = $(general)/REL
+$(REL)/RELModel/RELModel/RELModel.C
+$(REL)/RELModel/RELModel/RELModelNew.C
+
+subFunction = $(REL)/RELModel/subFunctions
+
+forcedRun = $(subFunction)/forcedRun
+$(forcedRun)/forcedRun.C
+
+freeRunMotion = $(subFunction)/freeRunMotion
+$(freeRunMotion)/freeRunMotion.C
+$(freeRunMotion)/freeRunMotionIO.C
+$(freeRunMotion)/freeRunMotionState.C
+$(freeRunMotion)/freeRunMotionStateIO.C
+
+restraints = $(freeRunMotion)/restraints
+$(restraints)/freeRunMotionRestraint/freeRunMotionRestraint.C
+$(restraints)/freeRunMotionRestraint/freeRunMotionRestraintNew.C
+
+constraints = $(freeRunMotion)/constraints
+$(constraints)/freeRunMotionconstraints/freeRunMotionconstraints.C
+$(constraints)/freeRunMotionconstraints/freeRunMotionconstraintsNew.C
+
+freeRunSolvers = $(freeRunMotion)/freeRunSolvers
+$(freeRunSolvers)/freeSolver/freeSolver.C
+
+$(REL)/derivedFvPatchFields/RELFreestreamVelocityFvPatchVectorField/RELFreestreamVelocityFvPatchVectorField.C
+$(REL)/derivedFvPatchFields/RELVelocityFvPatchVectorField/RELVelocityFvPatchVectorField.C
+$(REL)/derivedFvPatchFields/RELWallVelocityFvPatchVectorField/RELWallVelocityFvPatchVectorField.C
+
+LIB = $(FOAM_USER_LIBBIN)/libmyFiniteVolume
