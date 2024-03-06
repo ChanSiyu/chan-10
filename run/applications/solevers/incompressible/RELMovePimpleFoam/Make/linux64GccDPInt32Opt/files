@@ -1,3 +1,0 @@
-SOURCE += RELMovePimpleFoam.C
-
-EXE = $(FOAM_USER_APPBIN)/RELMovePimpleFoam
