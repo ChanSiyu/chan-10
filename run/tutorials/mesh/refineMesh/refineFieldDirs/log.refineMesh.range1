@@ -1,0 +1,49 @@
+/*---------------------------------------------------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  10
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+Build  : 10-c4cf895ad8fa
+Exec   : refineMesh -dict refineMeshDict.range1 -overwrite
+Date   : Jan 29 2024
+Time   : 21:22:54
+Host   : "chan-X570-AORUS-ELITE"
+PID    : 8671
+I/O    : uncollated
+Case   : /home/chan/OpenFOAM/chan-10/run/tutorials/mesh/refineMesh/refineFieldDirs
+nProcs : 1
+sigFpe : Enabling floating point exception trapping (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 10)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+Create polyMesh for time = 0
+
+Mesh edge statistics:
+    x aligned :  number:3071	minLen:0.034117207	maxLen:1.4216329
+    y aligned :  number:3328	minLen:0.034463217	maxLen:1.435967
+    z aligned :  number:36080	minLen:0.020989003	maxLen:1.3298835
+    other     :  number:60662	minLen:0.034117206	maxLen:1.435967
+
+Reading "refineMeshDict.range1"
+
+Refining according to "/home/chan/OpenFOAM/chan-10/run/tutorials/mesh/refineMesh/refineFieldDirs/system"
+
+Read 160 cells from cellSet "constant/polyMesh/sets/range1"
+
+Writing refined cells (1280) to cellSet "constant/polyMesh/sets/refinedCells"
+
+Writing map from new to old cell to "0/polyMesh/cellMap"
+
+Mesh edge statistics:
+    x aligned :  number:3194	minLen:0.034117207	maxLen:1.027865
+    y aligned :  number:3461	minLen:0.034463217	maxLen:0.95828574
+    z aligned :  number:37328	minLen:0.020989003	maxLen:0.67656335
+    other     :  number:63028	minLen:0.034117206	maxLen:1.027865
+
+End
+

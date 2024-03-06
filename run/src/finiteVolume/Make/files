@@ -1,0 +1,12 @@
+general = cfdTools/general
+
+REL = $(general)/REL
+$(REL)/RELModel/RELModel/RELModel.C
+$(REL)/RELModel/RELModel/RELModelNew.C
+$(REL)/RELModel/subFunctions/subFunctions.C
+
+$(REL)/derivedFvPatchFields/RELFreestreamVelocityFvPatchVectorField/RELFreestreamVelocityFvPatchVectorField.C
+$(REL)/derivedFvPatchFields/RELVelocityFvPatchVectorField/RELVelocityFvPatchVectorField.C
+$(REL)/derivedFvPatchFields/RELWallVelocityFvPatchVectorField/RELWallVelocityFvPatchVectorField.C
+
+LIB = $(FOAM_USER_LIBBIN)/libmyFiniteVolume

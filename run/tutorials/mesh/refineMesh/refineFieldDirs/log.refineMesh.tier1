@@ -1,0 +1,54 @@
+/*---------------------------------------------------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  10
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+Build  : 10-c4cf895ad8fa
+Exec   : refineMesh -dict refineMeshDict.tier1 -overwrite
+Date   : Jan 29 2024
+Time   : 21:22:53
+Host   : "chan-X570-AORUS-ELITE"
+PID    : 8647
+I/O    : uncollated
+Case   : /home/chan/OpenFOAM/chan-10/run/tutorials/mesh/refineMesh/refineFieldDirs
+nProcs : 1
+sigFpe : Enabling floating point exception trapping (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 10)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+Create polyMesh for time = 0
+
+Mesh edge statistics:
+    x aligned :  number:235	minLen:0.034117207	maxLen:1.4216329
+    y aligned :  number:240	minLen:0.034463217	maxLen:1.435967
+    z aligned :  number:2112	minLen:1.319785	maxLen:1.36552
+    other     :  number:4510	minLen:0.034117206	maxLen:1.435967
+
+Reading "refineMeshDict.tier1"
+
+Refining according to "/home/chan/OpenFOAM/chan-10/run/tutorials/mesh/refineMesh/refineFieldDirs/system"
+
+Read 200 cells from cellSet "constant/polyMesh/sets/tier1"
+
+Global Coordinate system:
+     e3 : (0 0 1)
+     e1   : (1 0 0)
+     e2   : (0 1 0)
+
+Writing refined cells (400) to cellSet "constant/polyMesh/sets/refinedCells"
+
+Writing map from new to old cell to "0/polyMesh/cellMap"
+
+Mesh edge statistics:
+    x aligned :  number:255	minLen:0.034117207	maxLen:1.4216329
+    y aligned :  number:264	minLen:0.034463217	maxLen:1.435967
+    z aligned :  number:2376	minLen:0.68229239	maxLen:1.3648714
+    other     :  number:4926	minLen:0.034117206	maxLen:1.435967
+
+End
+

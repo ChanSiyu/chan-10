@@ -1,0 +1,45 @@
+/*---------------------------------------------------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  10
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+Build  : 10-c4cf895ad8fa
+Exec   : extrudeMesh
+Date   : Jan 29 2024
+Time   : 21:19:18
+Host   : "chan-X570-AORUS-ELITE"
+PID    : 7447
+I/O    : uncollated
+Case   : /home/chan/OpenFOAM/chan-10/run/tutorials/incompressible/pimpleFoam/RAS/wingMotion/wingMotion2D_simpleFoam
+nProcs : 1
+sigFpe : Enabling floating point exception trapping (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 10)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+Create mesh for time = 0
+
+Reading "extrudeMeshDict"
+
+Selecting extrudeModel linearNormal
+Extruding from patch using model linearNormal
+Not collapsing any edges after extrusion
+
+Extruding patches 1(symFront) on mesh "../wingMotion_snappyHexMesh"
+
+Create mesh for time = 0
+
+Adding overall 0 processor patches.
+Testing:"../wingMotion_snappyHexMesh/system/fvSchemes"
+Mesh bounding box : (-1.2 -2.2 0.1) (5 2.2 0.15)
+        with span : (6.2 4.4 0.05)
+Merge distance    : 0
+
+Writing mesh to "constant/region0"
+
+End
+
